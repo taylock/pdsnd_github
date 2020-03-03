@@ -178,13 +178,13 @@ def display_data(df):
     """ Display 5 lines of raw bikeshare data."""
     r_length = df.shape[0]
     
-    # repeat from 0 to number of rows in steps of 5
-    for i in range(0, r_length, 5):
+    # repeat from 0 to number of rows in steps of 10
+    for i in range(0, r_length, 10):
         yes=input('\nDo you want to view user trip data? Type \'yes\' or \'no\'\n> ')
         if yes.lower() !='yes':
             break
         #get data and convert to json format
-        data_row= df.iloc[i: i + 5].to_json(orient='records', lines=True).split('\n')
+        data_row= df.iloc[i: i + 10].to_json(orient='records', lines=True).split('\n')
         for row in data_row:
             parsed_row = json.loads(row)
             json_row = json.dumps(parsed_row, indent=2)
